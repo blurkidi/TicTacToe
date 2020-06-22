@@ -86,14 +86,14 @@ class GameTest {
     fun shouldDraw() {
         val game = Game()
 
-        game.makeMove(Position.Row.TOP, Position.Column.LEFT)//x
-        game.makeMove(Position.Row.CENTER, Position.Column.CENTER)//o
+        game.makeMove(Position.Row.CENTER, Position.Column.CENTER)//x
+        game.makeMove(Position.Row.TOP, Position.Column.LEFT)//o
         game.makeMove(Position.Row.BOTTOM, Position.Column.LEFT)//x
-        game.makeMove(Position.Row.CENTER, Position.Column.LEFT)//o
-        game.makeMove(Position.Row.CENTER, Position.Column.RIGHT)//x
-        game.makeMove(Position.Row.TOP, Position.Column.CENTER)//o
-        game.makeMove(Position.Row.BOTTOM, Position.Column.CENTER)//x
         game.makeMove(Position.Row.TOP, Position.Column.RIGHT)//o
+        game.makeMove(Position.Row.TOP, Position.Column.CENTER)//x
+        game.makeMove(Position.Row.BOTTOM, Position.Column.CENTER)//o
+        game.makeMove(Position.Row.CENTER, Position.Column.LEFT)//x
+        game.makeMove(Position.Row.CENTER, Position.Column.RIGHT)//o
         game.makeMove(Position.Row.BOTTOM, Position.Column.RIGHT)//x
 
         game.state.assertFinished { assert(it.result == GameResult.Draw) }

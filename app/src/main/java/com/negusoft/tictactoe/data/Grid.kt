@@ -16,6 +16,11 @@ data class Grid(
     val bottomRight: Player? = null
 ) {
 
+    val isFull: Boolean
+        get() = topLeft != null && top != null && topRight != null
+                && centerLeft != null && center != null && centerRight != null
+                && bottomLeft != null && bottom != null && bottomRight != null
+
     /** Get the the move at the given position. */
     operator fun get(column: Position.Row, row: Position.Column): Player? = when(column) {
         Position.Row.TOP -> when(row) {

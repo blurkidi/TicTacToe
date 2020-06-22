@@ -26,12 +26,15 @@ class Game(private val lineDetector: LineDetector = LineDetector()) {
             return MoveResult.Error(MoveResult.Reason.SQUARE_NOT_EMPTY)
 
         grid = grid.edit(currentPlayer, column, row)
-        state = getNewState(currentPlayer)
+        state = getNewState(currentPlayer, grid)
 
         return MoveResult.Success(state)
     }
 
-    private fun getNewState(currentPlayer: Player): GameState {
+    private fun getNewState(currentPlayer: Player, grid: Grid): GameState {
+        if (grid.isFull)
+            return GameState.Finished(GameResult.Draw)
+
         val lines = lineDetector.detect(currentPlayer, grid)
         if (lines.isNotEmpty())
             return GameState.Finished(GameResult.Win(currentPlayer))

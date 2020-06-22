@@ -32,6 +32,7 @@ class GridTest {
         assertNull(grid.bottomLeft)
         assertNull(grid.bottom)
         assertNull(grid.bottomRight)
+        assertFalse(grid.isFull)
     }
 
     @Test
@@ -46,5 +47,15 @@ class GridTest {
         assertEquals(sampleGrid[Position.Row.TOP, Position.Column.LEFT], Player.X)
         assertEquals(editedGrid.topLeft, Player.O)
         assertEquals(editedGrid[Position.Row.TOP, Position.Column.LEFT], Player.O)
+    }
+
+    @Test
+    fun sholudBeFull() {
+        val grid = Grid(
+            Player.X, Player.O, Player.X,
+            Player.X, Player.O, Player.X,
+            Player.O, Player.X, Player.O
+        )
+        assert(grid.isFull)
     }
 }

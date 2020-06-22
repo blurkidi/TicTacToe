@@ -21,7 +21,7 @@ class LineDetector {
     private fun checkLine(player: Player, grid: Grid, line: Line): Line? {
         return if (grid[line.first.row, line.first.column] == player &&
             grid[line.second.row, line.second.column] == player &&
-            grid[line.second.row, line.second.column] == player) {
+            grid[line.third.row, line.third.column] == player) {
             line
         } else {
             null
