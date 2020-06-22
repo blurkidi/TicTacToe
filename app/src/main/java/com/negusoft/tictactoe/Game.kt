@@ -7,7 +7,7 @@ import com.negusoft.tictactoe.data.Position
 /**
  * A tic-tac-toe game where two players on a 3x3 grid.
  */
-class Game {
+class Game(private val lineDetector: LineDetector = LineDetector()) {
 
     var state: GameState = GameState.Ongoing(Player.X)
         private set
@@ -25,10 +25,19 @@ class Game {
         if (grid[column, row] != null)
             return MoveResult.Error(MoveResult.Reason.SQUARE_NOT_EMPTY)
 
-        state = GameState.Ongoing(currentPlayer.toggle())
         grid = grid.edit(currentPlayer, column, row)
+        state = getNewState(currentPlayer)
 
         return MoveResult.Success(state)
+    }
+
+    private fun getNewState(currentPlayer: Player): GameState {
+        val lines = lineDetector.detect(currentPlayer, grid)
+        if (lines.isNotEmpty())
+            return GameState.Finished(GameResult.Win(currentPlayer))
+
+        // Next player
+        return GameState.Ongoing(currentPlayer.toggle())
     }
 }
 

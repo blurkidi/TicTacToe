@@ -96,7 +96,7 @@ class GameTest {
         game.makeMove(Position.Row.TOP, Position.Column.RIGHT)//o
         game.makeMove(Position.Row.BOTTOM, Position.Column.RIGHT)//x
 
-        game.state.assertFinished { it.result == GameResult.Draw }
+        game.state.assertFinished { assert(it.result == GameResult.Draw) }
     }
 
     @Test
@@ -170,7 +170,7 @@ class GameTest {
 
         val result = finishedGame.makeMove(Position.Row.TOP, Position.Column.LEFT)
         finishedGame.state.assertFinished { it.result.assertWinner(Player.X) }
-        result.assertError { it.reason == MoveResult.Reason.GAME_ALREADY_FINISHED }
+        result.assertError { assert(it.reason == MoveResult.Reason.GAME_ALREADY_FINISHED) }
     }
 
     // Assert that the state is ongoing with the given players turn.
