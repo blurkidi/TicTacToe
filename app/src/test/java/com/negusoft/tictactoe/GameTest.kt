@@ -39,7 +39,7 @@ class GameTest {
         assertEquals(game.grid.topLeft, Player.X)
 
         val secondResult = game.makeMove(Position.Row.TOP, Position.Column.CENTER)
-        firstResult.assertSuccess { it.state.assertOngoing(Player.X) }
+        secondResult.assertSuccess { it.state.assertOngoing(Player.X) }
         game.state.assertOngoing(Player.X)
         assertEquals(game.grid.top, Player.O)
     }
@@ -176,7 +176,7 @@ class GameTest {
     // Assert that the state is ongoing with the given players turn.
     private fun GameState.assertOngoing(player: Player) {
         val ongoing = this as? GameState.Ongoing ?: error("Invalid state")
-        assertEquals(ongoing.currentPlayer, Player.X)
+        assertEquals(ongoing.currentPlayer, player)
     }
 
     // Assert that the state is ongoing with the given players turn.

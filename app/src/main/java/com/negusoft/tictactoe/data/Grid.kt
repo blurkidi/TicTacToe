@@ -17,13 +17,43 @@ data class Grid(
 ) {
 
     /** Get the the move at the given position. */
-    operator fun get(column: Position.Row, row: Position.Column): Player? = TODO()
+    operator fun get(column: Position.Row, row: Position.Column): Player? = when(column) {
+        Position.Row.TOP -> when(row) {
+            Position.Column.LEFT -> topLeft
+            Position.Column.CENTER -> top
+            Position.Column.RIGHT -> topRight
+        }
+        Position.Row.CENTER -> when(row) {
+            Position.Column.LEFT -> centerLeft
+            Position.Column.CENTER -> center
+            Position.Column.RIGHT -> centerRight
+        }
+        Position.Row.BOTTOM -> when(row) {
+            Position.Column.LEFT -> bottomLeft
+            Position.Column.CENTER -> bottom
+            Position.Column.RIGHT -> bottomRight
+        }
+    }
 
     /**
      * Edit the value on the given position.
      * Returns a new Grid instance with the new value.
      */
-    fun edit(player: Player?, column: Position.Row, row: Position.Column): Grid {
-        TODO()
+    fun edit(player: Player?, column: Position.Row, row: Position.Column): Grid = when(column) {
+        Position.Row.TOP -> when(row) {
+            Position.Column.LEFT -> copy(topLeft = player)
+            Position.Column.CENTER -> copy(top = player)
+            Position.Column.RIGHT -> copy(topRight = player)
+        }
+        Position.Row.CENTER -> when(row) {
+            Position.Column.LEFT -> copy(centerLeft = player)
+            Position.Column.CENTER -> copy(center = player)
+            Position.Column.RIGHT -> copy(centerRight = player)
+        }
+        Position.Row.BOTTOM -> when(row) {
+            Position.Column.LEFT -> copy(bottomLeft = player)
+            Position.Column.CENTER -> copy(bottom = player)
+            Position.Column.RIGHT -> copy(bottomRight = player)
+        }
     }
 }

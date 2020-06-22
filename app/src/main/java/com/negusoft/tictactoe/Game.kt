@@ -19,7 +19,16 @@ class Game {
      * Returns the result with either the new state or the error of the move.
      */
     fun makeMove(column: Position.Row, row: Position.Column): MoveResult {
-        return TODO()
+        val ongoingState = state as? GameState.Ongoing ?: return MoveResult.Error(MoveResult.Reason.GAME_ALREADY_FINISHED)
+        val currentPlayer = ongoingState.currentPlayer
+
+        if (grid[column, row] != null)
+            return MoveResult.Error(MoveResult.Reason.SQUARE_NOT_EMPTY)
+
+        state = GameState.Ongoing(currentPlayer.toggle())
+        grid = grid.edit(currentPlayer, column, row)
+
+        return MoveResult.Success(state)
     }
 }
 
