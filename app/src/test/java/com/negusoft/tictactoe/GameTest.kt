@@ -3,6 +3,7 @@ package com.negusoft.tictactoe
 import com.negusoft.tictactoe.data.Grid
 import com.negusoft.tictactoe.data.Player
 import com.negusoft.tictactoe.data.Position
+import com.negusoft.tictactoe.utils.*
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -171,36 +172,6 @@ class GameTest {
         val result = finishedGame.makeMove(Position.Row.TOP, Position.Column.LEFT)
         finishedGame.state.assertFinished { it.result.assertWinner(Player.X) }
         result.assertError { assert(it.reason == MoveResult.Reason.GAME_ALREADY_FINISHED) }
-    }
-
-    // Assert that the state is ongoing with the given players turn.
-    private fun GameState.assertOngoing(player: Player) {
-        val ongoing = this as? GameState.Ongoing ?: error("Invalid state")
-        assertEquals(ongoing.currentPlayer, player)
-    }
-
-    // Assert that the state is ongoing with the given players turn.
-    private fun GameState.assertFinished(assertion: (GameState.Finished) -> Unit) {
-        val finished = this as? GameState.Finished ?: error("Invalid state")
-        assertion(finished)
-    }
-
-    // Assert that the move is successful and use the expression for additional checks.
-    private fun MoveResult.assertSuccess(assertion: (MoveResult.Success) -> Unit) {
-        val success = this as? MoveResult.Success ?: error("Invalid move result")
-        assertion(success)
-    }
-
-    // Assert that the move is successful and use the expression for additional checks.
-    private fun MoveResult.assertError(assertion: (MoveResult.Error) -> Unit) {
-        val error = this as? MoveResult.Error ?: error("Invalid move result")
-        assertion(error)
-    }
-
-    // Assert that the move is successful and use the expression for additional checks.
-    private fun GameResult.assertWinner(winner: Player) {
-        val win = this as? GameResult.Win ?: error("Invalid game result")
-        assertEquals(win.winner, winner)
     }
 
 }
