@@ -9,7 +9,7 @@ import com.negusoft.tictactoe.data.Position
  */
 class Game {
 
-    var state = GameState.Ongoing(Player.X)
+    var state: GameState = GameState.Ongoing(Player.X)
         private set
     var grid = Grid()
         private set
