@@ -5,15 +5,15 @@ package com.negusoft.tictactoe.data
  * The class is immutable, a new instance is created each time the edit method is called.
  */
 data class Grid(
-    val topLeft: Player?,
-    val top: Player?,
-    val topRight: Player?,
-    val centerLeft: Player?,
-    val center: Player?,
-    val centerRight: Player?,
-    val bottomLeft: Player?,
-    val bottom: Player?,
-    val bottomRight: Player?
+    val topLeft: Player? = null,
+    val top: Player? = null,
+    val topRight: Player? = null,
+    val centerLeft: Player? = null,
+    val center: Player? = null,
+    val centerRight: Player? = null,
+    val bottomLeft: Player? = null,
+    val bottom: Player? = null,
+    val bottomRight: Player? = null
 ) {
 
     /** Get the the move at the given position. */
