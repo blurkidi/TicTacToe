@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TicTacToe</string>
+    <string name="game_error_square_not_empty">The square is already taken</string>
+    <string name="game_error_game_finished">Game finished, let\'s play again!</string>
 </resources>
