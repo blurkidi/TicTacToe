@@ -32,12 +32,12 @@ class Game(private val lineDetector: LineDetector = LineDetector()) {
     }
 
     private fun getNewState(currentPlayer: Player, grid: Grid): GameState {
-        if (grid.isFull)
-            return GameState.Finished(GameResult.Draw)
-
         val lines = lineDetector.detect(currentPlayer, grid)
         if (lines.isNotEmpty())
             return GameState.Finished(GameResult.Win(currentPlayer))
+
+        if (grid.isFull)
+            return GameState.Finished(GameResult.Draw)
 
         // Next player
         return GameState.Ongoing(currentPlayer.toggle())

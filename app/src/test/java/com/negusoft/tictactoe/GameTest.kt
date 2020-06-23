@@ -101,6 +101,23 @@ class GameTest {
     }
 
     @Test
+    fun shouldNotDrawWhenLastMoveWins() {
+        val game = Game()
+
+        game.makeMove(Position.Row.TOP, Position.Column.LEFT)//x
+        game.makeMove(Position.Row.TOP, Position.Column.CENTER)//o
+        game.makeMove(Position.Row.TOP, Position.Column.RIGHT)//x
+        game.makeMove(Position.Row.CENTER, Position.Column.LEFT)//o
+        game.makeMove(Position.Row.CENTER, Position.Column.CENTER)//x
+        game.makeMove(Position.Row.CENTER, Position.Column.RIGHT)//o
+        game.makeMove(Position.Row.BOTTOM, Position.Column.CENTER)//x
+        game.makeMove(Position.Row.BOTTOM, Position.Column.RIGHT)//o
+        game.makeMove(Position.Row.BOTTOM, Position.Column.LEFT)//x
+
+        game.state.assertFinished { it.result.assertWinner(Player.X) }
+    }
+
+    @Test
     fun shouldDetectRows() {
         val topGame = Game().playInRow(Position.Row.TOP, Position.Row.CENTER)
         topGame.state.assertFinished { it.result.assertWinner(Player.X) }
