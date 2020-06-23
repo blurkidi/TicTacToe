@@ -5,16 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.negusoft.tictactoe.R
+import androidx.fragment.app.viewModels
+import com.negusoft.tictactoe.databinding.FragmentTictactoeBinding
 
 class TicTacToeFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_tictactoe, container, false)
+    val viewModel by viewModels<TicTacToeViewModel>()
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val binding = FragmentTictactoeBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        return binding.root
     }
 
 }

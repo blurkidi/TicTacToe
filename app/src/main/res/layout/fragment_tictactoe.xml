@@ -2,6 +2,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <import type="com.negusoft.tictactoe.data.Position" />
+        <variable
+            name="viewModel"
+            type="com.negusoft.tictactoe.presentation.TicTacToeViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -74,33 +81,42 @@
             android:id="@+id/squareTopLeft"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:foreground="@drawable/ic_player_x"
+            app:playerForeground="@{viewModel.grid.topLeft}"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.TOP, Position.Column.LEFT)}"
             app:layout_constraintBottom_toTopOf="@+id/horizontalLineTop"
             app:layout_constraintEnd_toStartOf="@+id/verticalLineLeft"
             app:layout_constraintStart_toStartOf="@+id/gridFrame"
-            app:layout_constraintTop_toTopOf="@+id/gridFrame" />
+            app:layout_constraintTop_toTopOf="@+id/gridFrame"
+            tools:foreground="@drawable/ic_player_x" />
 
         <Button
             style="?borderlessButtonStyle"
             android:id="@+id/squareTop"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:foreground="@drawable/ic_player_x"
+            app:playerForeground="@{viewModel.grid.top}"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.TOP, Position.Column.CENTER)}"
             app:layout_constraintBottom_toTopOf="@+id/horizontalLineTop"
             app:layout_constraintEnd_toStartOf="@+id/verticalLineRight"
             app:layout_constraintStart_toStartOf="@+id/verticalLineLeft"
-            app:layout_constraintTop_toTopOf="@+id/gridFrame" />
+            app:layout_constraintTop_toTopOf="@+id/gridFrame"
+            tools:foreground="@drawable/ic_player_x" />
 
         <Button
             style="?borderlessButtonStyle"
             android:id="@+id/squareTopRight"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:foreground="@drawable/ic_player_x"
+            app:playerForeground="@{viewModel.grid.topRight}"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.TOP, Position.Column.RIGHT)}"
             app:layout_constraintBottom_toTopOf="@+id/horizontalLineTop"
             app:layout_constraintEnd_toEndOf="@+id/gridFrame"
             app:layout_constraintStart_toStartOf="@+id/verticalLineRight"
-            app:layout_constraintTop_toTopOf="@+id/gridFrame" />
+            app:layout_constraintTop_toTopOf="@+id/gridFrame"
+            tools:foreground="@drawable/ic_player_o" />
 
         <!-- Center square buttons -->
 
@@ -109,33 +125,42 @@
             android:id="@+id/squareCenterLeft"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:foreground="@drawable/ic_player_o"
+            app:playerForeground="@{viewModel.grid.centerLeft}"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.CENTER, Position.Column.LEFT)}"
             app:layout_constraintBottom_toTopOf="@+id/horizontalLineBottom"
             app:layout_constraintEnd_toStartOf="@+id/verticalLineLeft"
             app:layout_constraintStart_toStartOf="@+id/gridFrame"
-            app:layout_constraintTop_toTopOf="@+id/horizontalLineTop" />
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineTop"
+            tools:foreground="@drawable/ic_player_o" />
 
         <Button
             style="?borderlessButtonStyle"
             android:id="@+id/squareCenter"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:foreground="@drawable/ic_player_o"
+            app:playerForeground="@{viewModel.grid.center}"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.CENTER, Position.Column.CENTER)}"
             app:layout_constraintBottom_toTopOf="@+id/horizontalLineBottom"
             app:layout_constraintEnd_toStartOf="@+id/verticalLineRight"
             app:layout_constraintStart_toStartOf="@+id/verticalLineLeft"
-            app:layout_constraintTop_toTopOf="@+id/horizontalLineTop" />
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineTop"
+            tools:foreground="@drawable/ic_player_x" />
 
         <Button
             style="?borderlessButtonStyle"
             android:id="@+id/squareCenterRight"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:foreground="@drawable/ic_player_x"
+            app:playerForeground="@{viewModel.grid.centerRight}"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.CENTER, Position.Column.RIGHT)}"
             app:layout_constraintBottom_toTopOf="@+id/horizontalLineBottom"
             app:layout_constraintEnd_toEndOf="@+id/gridFrame"
             app:layout_constraintStart_toStartOf="@+id/verticalLineRight"
-            app:layout_constraintTop_toTopOf="@+id/horizontalLineTop" />
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineTop"
+            tools:foreground="@drawable/ic_player_x" />
 
         <!-- Bottom square buttons -->
 
@@ -144,33 +169,42 @@
             android:id="@+id/squareBottomLeft"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:foreground="@drawable/ic_player_x"
+            app:playerForeground="@{viewModel.grid.bottomLeft}"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.BOTTOM, Position.Column.LEFT)}"
             app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
             app:layout_constraintEnd_toStartOf="@+id/verticalLineLeft"
             app:layout_constraintStart_toStartOf="@+id/gridFrame"
-            app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom" />
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom"
+            tools:foreground="@drawable/ic_player_x" />
 
         <Button
             style="?borderlessButtonStyle"
             android:id="@+id/squareBottom"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:foreground="@drawable/ic_player_o"
+            app:playerForeground="@{viewModel.grid.bottom}"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.BOTTOM, Position.Column.CENTER)}"
             app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
             app:layout_constraintEnd_toStartOf="@+id/verticalLineRight"
             app:layout_constraintStart_toStartOf="@+id/verticalLineLeft"
-            app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom" />
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom"
+            tools:foreground="@drawable/ic_player_o" />
 
         <Button
             style="?borderlessButtonStyle"
             android:id="@+id/squareBottomRight"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:foreground="@drawable/ic_player_o"
+            app:playerForeground="@{viewModel.grid.bottomRight}"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.BOTTOM, Position.Column.RIGHT)}"
             app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
             app:layout_constraintEnd_toEndOf="@+id/gridFrame"
             app:layout_constraintStart_toStartOf="@+id/verticalLineRight"
-            app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom" />
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom"
+            tools:foreground="@drawable/ic_player_o" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
