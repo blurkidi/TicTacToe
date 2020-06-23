@@ -1,173 +1,177 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Square grid space -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <View
-        android:id="@+id/gridFrame"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!-- Square grid space -->
+
+        <View
+            android:id="@+id/gridFrame"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <!-- Horizontal and Vertical lines -->
+        <!-- Horizontal and Vertical lines -->
 
-    <View
-        android:id="@+id/verticalLineLeft"
-        android:layout_width="@dimen/grid_line_thickness"
-        android:layout_height="0dp"
-        android:background="?colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="@id/gridFrame"
-        app:layout_constraintEnd_toEndOf="@+id/gridFrame"
-        app:layout_constraintHorizontal_bias="0.33"
-        app:layout_constraintStart_toStartOf="@id/gridFrame"
-        app:layout_constraintTop_toTopOf="@id/gridFrame" />
+        <View
+            android:id="@+id/verticalLineLeft"
+            android:layout_width="@dimen/grid_line_thickness"
+            android:layout_height="0dp"
+            android:background="?colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@id/gridFrame"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintHorizontal_bias="0.33"
+            app:layout_constraintStart_toStartOf="@id/gridFrame"
+            app:layout_constraintTop_toTopOf="@id/gridFrame" />
 
-    <View
-        android:id="@+id/verticalLineRight"
-        android:layout_width="@dimen/grid_line_thickness"
-        android:layout_height="0dp"
-        android:background="?colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="@id/gridFrame"
-        app:layout_constraintEnd_toEndOf="@+id/gridFrame"
-        app:layout_constraintHorizontal_bias="0.67"
-        app:layout_constraintStart_toStartOf="@id/gridFrame"
-        app:layout_constraintTop_toTopOf="@id/gridFrame" />
+        <View
+            android:id="@+id/verticalLineRight"
+            android:layout_width="@dimen/grid_line_thickness"
+            android:layout_height="0dp"
+            android:background="?colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@id/gridFrame"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintHorizontal_bias="0.67"
+            app:layout_constraintStart_toStartOf="@id/gridFrame"
+            app:layout_constraintTop_toTopOf="@id/gridFrame" />
 
-    <View
-        android:id="@+id/horizontalLineTop"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/grid_line_thickness"
-        android:background="?colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="@id/gridFrame"
-        app:layout_constraintEnd_toEndOf="@+id/gridFrame"
-        app:layout_constraintVertical_bias="0.33"
-        app:layout_constraintStart_toStartOf="@id/gridFrame"
-        app:layout_constraintTop_toTopOf="@id/gridFrame" />
+        <View
+            android:id="@+id/horizontalLineTop"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/grid_line_thickness"
+            android:background="?colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@id/gridFrame"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintVertical_bias="0.33"
+            app:layout_constraintStart_toStartOf="@id/gridFrame"
+            app:layout_constraintTop_toTopOf="@id/gridFrame" />
 
-    <View
-        android:id="@+id/horizontalLineBottom"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/grid_line_thickness"
-        android:background="?colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="@id/gridFrame"
-        app:layout_constraintEnd_toEndOf="@+id/gridFrame"
-        app:layout_constraintVertical_bias="0.67"
-        app:layout_constraintStart_toStartOf="@id/gridFrame"
-        app:layout_constraintTop_toTopOf="@id/gridFrame" />
+        <View
+            android:id="@+id/horizontalLineBottom"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/grid_line_thickness"
+            android:background="?colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@id/gridFrame"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintVertical_bias="0.67"
+            app:layout_constraintStart_toStartOf="@id/gridFrame"
+            app:layout_constraintTop_toTopOf="@id/gridFrame" />
 
-    <!-- Top square buttons -->
+        <!-- Top square buttons -->
 
-    <Button
-        style="?borderlessButtonStyle"
-        android:id="@+id/squareTopLeft"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:foreground="@drawable/ic_player_x"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalLineTop"
-        app:layout_constraintEnd_toStartOf="@+id/verticalLineLeft"
-        app:layout_constraintStart_toStartOf="@+id/gridFrame"
-        app:layout_constraintTop_toTopOf="@+id/gridFrame" />
+        <Button
+            style="?borderlessButtonStyle"
+            android:id="@+id/squareTopLeft"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="@drawable/ic_player_x"
+            app:layout_constraintBottom_toTopOf="@+id/horizontalLineTop"
+            app:layout_constraintEnd_toStartOf="@+id/verticalLineLeft"
+            app:layout_constraintStart_toStartOf="@+id/gridFrame"
+            app:layout_constraintTop_toTopOf="@+id/gridFrame" />
 
-    <Button
-        style="?borderlessButtonStyle"
-        android:id="@+id/squareTop"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:foreground="@drawable/ic_player_x"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalLineTop"
-        app:layout_constraintEnd_toStartOf="@+id/verticalLineRight"
-        app:layout_constraintStart_toStartOf="@+id/verticalLineLeft"
-        app:layout_constraintTop_toTopOf="@+id/gridFrame" />
+        <Button
+            style="?borderlessButtonStyle"
+            android:id="@+id/squareTop"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="@drawable/ic_player_x"
+            app:layout_constraintBottom_toTopOf="@+id/horizontalLineTop"
+            app:layout_constraintEnd_toStartOf="@+id/verticalLineRight"
+            app:layout_constraintStart_toStartOf="@+id/verticalLineLeft"
+            app:layout_constraintTop_toTopOf="@+id/gridFrame" />
 
-    <Button
-        style="?borderlessButtonStyle"
-        android:id="@+id/squareTopRight"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:foreground="@drawable/ic_player_x"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalLineTop"
-        app:layout_constraintEnd_toEndOf="@+id/gridFrame"
-        app:layout_constraintStart_toStartOf="@+id/verticalLineRight"
-        app:layout_constraintTop_toTopOf="@+id/gridFrame" />
+        <Button
+            style="?borderlessButtonStyle"
+            android:id="@+id/squareTopRight"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="@drawable/ic_player_x"
+            app:layout_constraintBottom_toTopOf="@+id/horizontalLineTop"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintStart_toStartOf="@+id/verticalLineRight"
+            app:layout_constraintTop_toTopOf="@+id/gridFrame" />
 
-    <!-- Center square buttons -->
+        <!-- Center square buttons -->
 
-    <Button
-        style="?borderlessButtonStyle"
-        android:id="@+id/squareCenterLeft"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:foreground="@drawable/ic_player_o"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalLineBottom"
-        app:layout_constraintEnd_toStartOf="@+id/verticalLineLeft"
-        app:layout_constraintStart_toStartOf="@+id/gridFrame"
-        app:layout_constraintTop_toTopOf="@+id/horizontalLineTop" />
+        <Button
+            style="?borderlessButtonStyle"
+            android:id="@+id/squareCenterLeft"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="@drawable/ic_player_o"
+            app:layout_constraintBottom_toTopOf="@+id/horizontalLineBottom"
+            app:layout_constraintEnd_toStartOf="@+id/verticalLineLeft"
+            app:layout_constraintStart_toStartOf="@+id/gridFrame"
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineTop" />
 
-    <Button
-        style="?borderlessButtonStyle"
-        android:id="@+id/squareCenter"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:foreground="@drawable/ic_player_o"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalLineBottom"
-        app:layout_constraintEnd_toStartOf="@+id/verticalLineRight"
-        app:layout_constraintStart_toStartOf="@+id/verticalLineLeft"
-        app:layout_constraintTop_toTopOf="@+id/horizontalLineTop" />
+        <Button
+            style="?borderlessButtonStyle"
+            android:id="@+id/squareCenter"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="@drawable/ic_player_o"
+            app:layout_constraintBottom_toTopOf="@+id/horizontalLineBottom"
+            app:layout_constraintEnd_toStartOf="@+id/verticalLineRight"
+            app:layout_constraintStart_toStartOf="@+id/verticalLineLeft"
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineTop" />
 
-    <Button
-        style="?borderlessButtonStyle"
-        android:id="@+id/squareCenterRight"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:foreground="@drawable/ic_player_x"
-        app:layout_constraintBottom_toTopOf="@+id/horizontalLineBottom"
-        app:layout_constraintEnd_toEndOf="@+id/gridFrame"
-        app:layout_constraintStart_toStartOf="@+id/verticalLineRight"
-        app:layout_constraintTop_toTopOf="@+id/horizontalLineTop" />
+        <Button
+            style="?borderlessButtonStyle"
+            android:id="@+id/squareCenterRight"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="@drawable/ic_player_x"
+            app:layout_constraintBottom_toTopOf="@+id/horizontalLineBottom"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintStart_toStartOf="@+id/verticalLineRight"
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineTop" />
 
-    <!-- Bottom square buttons -->
+        <!-- Bottom square buttons -->
 
-    <Button
-        style="?borderlessButtonStyle"
-        android:id="@+id/squareBottomLeft"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:foreground="@drawable/ic_player_x"
-        app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
-        app:layout_constraintEnd_toStartOf="@+id/verticalLineLeft"
-        app:layout_constraintStart_toStartOf="@+id/gridFrame"
-        app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom" />
+        <Button
+            style="?borderlessButtonStyle"
+            android:id="@+id/squareBottomLeft"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="@drawable/ic_player_x"
+            app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
+            app:layout_constraintEnd_toStartOf="@+id/verticalLineLeft"
+            app:layout_constraintStart_toStartOf="@+id/gridFrame"
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom" />
 
-    <Button
-        style="?borderlessButtonStyle"
-        android:id="@+id/squareBottom"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:foreground="@drawable/ic_player_o"
-        app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
-        app:layout_constraintEnd_toStartOf="@+id/verticalLineRight"
-        app:layout_constraintStart_toStartOf="@+id/verticalLineLeft"
-        app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom" />
+        <Button
+            style="?borderlessButtonStyle"
+            android:id="@+id/squareBottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="@drawable/ic_player_o"
+            app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
+            app:layout_constraintEnd_toStartOf="@+id/verticalLineRight"
+            app:layout_constraintStart_toStartOf="@+id/verticalLineLeft"
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom" />
 
-    <Button
-        style="?borderlessButtonStyle"
-        android:id="@+id/squareBottomRight"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:foreground="@drawable/ic_player_o"
-        app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
-        app:layout_constraintEnd_toEndOf="@+id/gridFrame"
-        app:layout_constraintStart_toStartOf="@+id/verticalLineRight"
-        app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom" />
+        <Button
+            style="?borderlessButtonStyle"
+            android:id="@+id/squareBottomRight"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="@drawable/ic_player_o"
+            app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintStart_toStartOf="@+id/verticalLineRight"
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
