@@ -1,0 +1,245 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.negusoft.tictactoe.data.Position" />
+        <variable
+            name="viewModel"
+            type="com.negusoft.tictactoe.presentation.TicTacToeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:animateLayoutChanges="true">
+
+        <!-- Square grid space -->
+
+        <View
+            android:id="@+id/gridFrame"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toTopOf="@id/resetButton"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- Horizontal and Vertical lines -->
+
+        <View
+            android:id="@+id/verticalLineLeft"
+            android:layout_width="@dimen/grid_line_thickness"
+            android:layout_height="0dp"
+            android:background="?colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@id/gridFrame"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintHorizontal_bias="0.33"
+            app:layout_constraintStart_toStartOf="@id/gridFrame"
+            app:layout_constraintTop_toTopOf="@id/gridFrame" />
+
+        <View
+            android:id="@+id/verticalLineRight"
+            android:layout_width="@dimen/grid_line_thickness"
+            android:layout_height="0dp"
+            android:background="?colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@id/gridFrame"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintHorizontal_bias="0.67"
+            app:layout_constraintStart_toStartOf="@id/gridFrame"
+            app:layout_constraintTop_toTopOf="@id/gridFrame" />
+
+        <View
+            android:id="@+id/horizontalLineTop"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/grid_line_thickness"
+            android:background="?colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@id/gridFrame"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintStart_toStartOf="@id/gridFrame"
+            app:layout_constraintTop_toTopOf="@id/gridFrame"
+            app:layout_constraintVertical_bias="0.33" />
+
+        <View
+            android:id="@+id/horizontalLineBottom"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/grid_line_thickness"
+            android:background="?colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@id/gridFrame"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintStart_toStartOf="@id/gridFrame"
+            app:layout_constraintTop_toTopOf="@id/gridFrame"
+            app:layout_constraintVertical_bias="0.67" />
+
+        <!-- Top square buttons -->
+
+        <Button
+            android:id="@+id/squareTopLeft"
+            style="?borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.TOP, Position.Column.LEFT)}"
+            app:layout_constraintBottom_toTopOf="@+id/horizontalLineTop"
+            app:layout_constraintEnd_toStartOf="@+id/verticalLineLeft"
+            app:layout_constraintStart_toStartOf="@+id/gridFrame"
+            app:layout_constraintTop_toTopOf="@+id/gridFrame"
+            app:playerForeground="@{viewModel.grid.topLeft}"
+            tools:foreground="@drawable/ic_player_x" />
+
+        <Button
+            android:id="@+id/squareTop"
+            style="?borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.TOP, Position.Column.CENTER)}"
+            app:layout_constraintBottom_toTopOf="@+id/horizontalLineTop"
+            app:layout_constraintEnd_toStartOf="@+id/verticalLineRight"
+            app:layout_constraintStart_toStartOf="@+id/verticalLineLeft"
+            app:layout_constraintTop_toTopOf="@+id/gridFrame"
+            app:playerForeground="@{viewModel.grid.top}"
+            tools:foreground="@drawable/ic_player_x" />
+
+        <Button
+            android:id="@+id/squareTopRight"
+            style="?borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.TOP, Position.Column.RIGHT)}"
+            app:layout_constraintBottom_toTopOf="@+id/horizontalLineTop"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintStart_toStartOf="@+id/verticalLineRight"
+            app:layout_constraintTop_toTopOf="@+id/gridFrame"
+            app:playerForeground="@{viewModel.grid.topRight}"
+            tools:foreground="@drawable/ic_player_o" />
+
+        <!-- Center square buttons -->
+
+        <Button
+            android:id="@+id/squareCenterLeft"
+            style="?borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.CENTER, Position.Column.LEFT)}"
+            app:layout_constraintBottom_toTopOf="@+id/horizontalLineBottom"
+            app:layout_constraintEnd_toStartOf="@+id/verticalLineLeft"
+            app:layout_constraintStart_toStartOf="@+id/gridFrame"
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineTop"
+            app:playerForeground="@{viewModel.grid.centerLeft}"
+            tools:foreground="@drawable/ic_player_o" />
+
+        <Button
+            android:id="@+id/squareCenter"
+            style="?borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.CENTER, Position.Column.CENTER)}"
+            app:layout_constraintBottom_toTopOf="@+id/horizontalLineBottom"
+            app:layout_constraintEnd_toStartOf="@+id/verticalLineRight"
+            app:layout_constraintStart_toStartOf="@+id/verticalLineLeft"
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineTop"
+            app:playerForeground="@{viewModel.grid.center}"
+            tools:foreground="@drawable/ic_player_x" />
+
+        <Button
+            android:id="@+id/squareCenterRight"
+            style="?borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.CENTER, Position.Column.RIGHT)}"
+            app:layout_constraintBottom_toTopOf="@+id/horizontalLineBottom"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintStart_toStartOf="@+id/verticalLineRight"
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineTop"
+            app:playerForeground="@{viewModel.grid.centerRight}"
+            tools:foreground="@drawable/ic_player_x" />
+
+        <!-- Bottom square buttons -->
+
+        <Button
+            android:id="@+id/squareBottomLeft"
+            style="?borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.BOTTOM, Position.Column.LEFT)}"
+            app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
+            app:layout_constraintEnd_toStartOf="@+id/verticalLineLeft"
+            app:layout_constraintStart_toStartOf="@+id/gridFrame"
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom"
+            app:playerForeground="@{viewModel.grid.bottomLeft}"
+            tools:foreground="@drawable/ic_player_x" />
+
+        <Button
+            android:id="@+id/squareBottom"
+            style="?borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.BOTTOM, Position.Column.CENTER)}"
+            app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
+            app:layout_constraintEnd_toStartOf="@+id/verticalLineRight"
+            app:layout_constraintStart_toStartOf="@+id/verticalLineLeft"
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom"
+            app:playerForeground="@{viewModel.grid.bottom}"
+            tools:foreground="@drawable/ic_player_o" />
+
+        <Button
+            android:id="@+id/squareBottomRight"
+            style="?borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foregroundGravity="fill"
+            android:onClick="@{() -> viewModel.makeMove(Position.Row.BOTTOM, Position.Column.RIGHT)}"
+            app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintStart_toStartOf="@+id/verticalLineRight"
+            app:layout_constraintTop_toTopOf="@+id/horizontalLineBottom"
+            app:playerForeground="@{viewModel.grid.bottomRight}"
+            tools:foreground="@drawable/ic_player_o" />
+
+        <!-- Reset button -->
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="?colorAccent"
+            android:minWidth="240dp"
+            android:onClick="@{() -> viewModel.newGame()}"
+            android:text="@string/button_new_game"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/gridFrame"
+            app:layout_constraintStart_toStartOf="@+id/gridFrame"
+            app:layout_constraintTop_toBottomOf="@+id/gridFrame" />
+
+        <!-- Result Indicator -->
+
+        <TextView
+            android:id="@+id/gameResultOverlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorTranslucentBackground"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:visibleOrGone="@{viewModel.result != null}"
+            app:gameResult="@{viewModel.result}"
+            app:layout_constraintLeft_toLeftOf="@+id/gridFrame"
+            app:layout_constraintRight_toRightOf="@+id/gridFrame"
+            app:layout_constraintTop_toTopOf="@+id/gridFrame"
+            app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
+            tools:text="Zangief Wins!"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
