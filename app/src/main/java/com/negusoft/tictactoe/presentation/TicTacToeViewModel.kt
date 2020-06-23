@@ -12,7 +12,7 @@ import com.negusoft.tictactoe.utils.databinding.setEventValue
 
 class TicTacToeViewModel : ViewModel() {
 
-    private val game = Game()
+    private var game = Game()
 
     val grid = ObservableField(game.grid)
     val state = ObservableField(game.state)
@@ -25,6 +25,12 @@ class TicTacToeViewModel : ViewModel() {
             is MoveResult.Success -> handleMoveSuccess(result)
             is MoveResult.Error -> handleMoveError(result)
         }
+    }
+
+    fun newGame() {
+        game = Game()
+        grid.set(game.grid)
+        state.set(game.state)
     }
 
     private fun handleMoveSuccess(success: MoveResult.Success) {
