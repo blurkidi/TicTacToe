@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.negusoft.tictactoe.Game
+import com.negusoft.tictactoe.GameResult
+import com.negusoft.tictactoe.GameState
 import com.negusoft.tictactoe.MoveResult
 import com.negusoft.tictactoe.data.Position
 import com.negusoft.tictactoe.utils.databinding.Event
@@ -16,6 +18,13 @@ class TicTacToeViewModel : ViewModel() {
 
     val grid = ObservableField(game.grid)
     val state = ObservableField(game.state)
+
+    // The result observable depends on the 'state' and maps to the result when it is finished
+    val result: ObservableField<GameResult> = object : ObservableField<GameResult>(state) {
+        override fun get(): GameResult? {
+            return (state.get() as? GameState.Finished)?.result
+        }
+    }
 
     private val _errorEvent = MutableLiveData<Event<MoveResult.Reason>>()
     val errorEvent: LiveData<Event<MoveResult.Reason>> get() = _errorEvent

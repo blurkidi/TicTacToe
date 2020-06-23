@@ -12,7 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:animateLayoutChanges="true">
 
         <!-- Square grid space -->
 
@@ -221,6 +222,23 @@
             app:layout_constraintEnd_toEndOf="@+id/gridFrame"
             app:layout_constraintStart_toStartOf="@+id/gridFrame"
             app:layout_constraintTop_toBottomOf="@+id/gridFrame" />
+
+        <!-- Result Indicator -->
+
+        <TextView
+            android:id="@+id/gameResultOverlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorTranslucentBackground"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:visibleOrGone="@{viewModel.result != null}"
+            app:gameResult="@{viewModel.result}"
+            app:layout_constraintLeft_toLeftOf="@+id/gridFrame"
+            app:layout_constraintRight_toRightOf="@+id/gridFrame"
+            app:layout_constraintTop_toTopOf="@+id/gridFrame"
+            app:layout_constraintBottom_toBottomOf="@+id/gridFrame"
+            tools:text="Zangief Wins!"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
