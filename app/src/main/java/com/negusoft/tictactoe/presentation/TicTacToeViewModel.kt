@@ -4,10 +4,10 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.negusoft.tictactoe.Game
-import com.negusoft.tictactoe.GameResult
-import com.negusoft.tictactoe.GameState
-import com.negusoft.tictactoe.MoveResult
+import com.negusoft.tictactoe.domain.Game
+import com.negusoft.tictactoe.domain.GameResult
+import com.negusoft.tictactoe.domain.GameState
+import com.negusoft.tictactoe.domain.MoveResult
 import com.negusoft.tictactoe.data.Position
 import com.negusoft.tictactoe.utils.databinding.Event
 import com.negusoft.tictactoe.utils.databinding.setEventValue

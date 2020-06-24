@@ -1,4 +1,4 @@
-package com.negusoft.tictactoe
+package com.negusoft.tictactoe.domain
 
 import com.negusoft.tictactoe.data.Grid
 import com.negusoft.tictactoe.data.Player
@@ -9,7 +9,8 @@ import com.negusoft.tictactoe.data.Position
  */
 class Game(private val lineDetector: LineDetector = LineDetector()) {
 
-    var state: GameState = GameState.Ongoing(Player.X)
+    var state: GameState =
+        GameState.Ongoing(Player.X)
         private set
     var grid = Grid()
         private set
@@ -19,11 +20,16 @@ class Game(private val lineDetector: LineDetector = LineDetector()) {
      * Returns the result with either the new state or the error of the move.
      */
     fun makeMove(column: Position.Row, row: Position.Column): MoveResult {
-        val ongoingState = state as? GameState.Ongoing ?: return MoveResult.Error(MoveResult.Reason.GAME_ALREADY_FINISHED)
+        val ongoingState = state as? GameState.Ongoing
+            ?: return MoveResult.Error(
+                MoveResult.Reason.GAME_ALREADY_FINISHED
+            )
         val currentPlayer = ongoingState.currentPlayer
 
         if (grid[column, row] != null)
-            return MoveResult.Error(MoveResult.Reason.SQUARE_NOT_EMPTY)
+            return MoveResult.Error(
+                MoveResult.Reason.SQUARE_NOT_EMPTY
+            )
 
         grid = grid.edit(currentPlayer, column, row)
         state = getNewState(currentPlayer, grid)
@@ -34,10 +40,14 @@ class Game(private val lineDetector: LineDetector = LineDetector()) {
     private fun getNewState(currentPlayer: Player, grid: Grid): GameState {
         val lines = lineDetector.detect(currentPlayer, grid)
         if (lines.isNotEmpty())
-            return GameState.Finished(GameResult.Win(currentPlayer))
+            return GameState.Finished(
+                GameResult.Win(currentPlayer)
+            )
 
         if (grid.isFull)
-            return GameState.Finished(GameResult.Draw)
+            return GameState.Finished(
+                GameResult.Draw
+            )
 
         // Next player
         return GameState.Ongoing(currentPlayer.toggle())

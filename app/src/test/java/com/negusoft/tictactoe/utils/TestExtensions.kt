@@ -1,8 +1,8 @@
 package com.negusoft.tictactoe.utils
 
-import com.negusoft.tictactoe.GameResult
-import com.negusoft.tictactoe.GameState
-import com.negusoft.tictactoe.MoveResult
+import com.negusoft.tictactoe.domain.GameResult
+import com.negusoft.tictactoe.domain.GameState
+import com.negusoft.tictactoe.domain.MoveResult
 import com.negusoft.tictactoe.data.Player
 import org.junit.Assert
 

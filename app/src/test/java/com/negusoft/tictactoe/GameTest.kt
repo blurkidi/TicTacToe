@@ -1,8 +1,10 @@
 package com.negusoft.tictactoe
 
-import com.negusoft.tictactoe.data.Grid
 import com.negusoft.tictactoe.data.Player
 import com.negusoft.tictactoe.data.Position
+import com.negusoft.tictactoe.domain.Game
+import com.negusoft.tictactoe.domain.GameResult
+import com.negusoft.tictactoe.domain.MoveResult
 import com.negusoft.tictactoe.utils.*
 import org.junit.Test
 
@@ -119,13 +121,16 @@ class GameTest {
 
     @Test
     fun shouldDetectRows() {
-        val topGame = Game().playInRow(Position.Row.TOP, Position.Row.CENTER)
+        val topGame = Game()
+            .playInRow(Position.Row.TOP, Position.Row.CENTER)
         topGame.state.assertFinished { it.result.assertWinner(Player.X) }
 
-        val centerGame = Game().playInRow(Position.Row.CENTER, Position.Row.BOTTOM)
+        val centerGame = Game()
+            .playInRow(Position.Row.CENTER, Position.Row.BOTTOM)
         centerGame.state.assertFinished { it.result.assertWinner(Player.X) }
 
-        val bottomGame = Game().playInRow(Position.Row.BOTTOM, Position.Row.TOP)
+        val bottomGame = Game()
+            .playInRow(Position.Row.BOTTOM, Position.Row.TOP)
         bottomGame.state.assertFinished { it.result.assertWinner(Player.X) }
     }
 
@@ -140,13 +145,16 @@ class GameTest {
 
     @Test
     fun shouldDetectColumns() {
-        val leftGame = Game().playInCoumnt(Position.Column.LEFT, Position.Column.CENTER)
+        val leftGame = Game()
+            .playInCoumnt(Position.Column.LEFT, Position.Column.CENTER)
         leftGame.state.assertFinished { it.result.assertWinner(Player.X) }
 
-        val centerGame = Game().playInCoumnt(Position.Column.CENTER, Position.Column.RIGHT)
+        val centerGame = Game()
+            .playInCoumnt(Position.Column.CENTER, Position.Column.RIGHT)
         centerGame.state.assertFinished { it.result.assertWinner(Player.X) }
 
-        val rightGame = Game().playInCoumnt(Position.Column.RIGHT, Position.Column.LEFT)
+        val rightGame = Game()
+            .playInCoumnt(Position.Column.RIGHT, Position.Column.LEFT)
         rightGame.state.assertFinished { it.result.assertWinner(Player.X) }
     }
 
@@ -184,7 +192,8 @@ class GameTest {
 
     @Test
     fun shouldNotMoveAfterGameFinishes() {
-        val finishedGame = Game().playInCoumnt(Position.Column.LEFT, Position.Column.CENTER)
+        val finishedGame = Game()
+            .playInCoumnt(Position.Column.LEFT, Position.Column.CENTER)
 
         val result = finishedGame.makeMove(Position.Row.TOP, Position.Column.LEFT)
         finishedGame.state.assertFinished { it.result.assertWinner(Player.X) }

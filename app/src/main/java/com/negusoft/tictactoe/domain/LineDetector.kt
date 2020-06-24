@@ -1,4 +1,4 @@
-package com.negusoft.tictactoe
+package com.negusoft.tictactoe.domain
 
 import com.negusoft.tictactoe.data.Grid
 import com.negusoft.tictactoe.data.Line
@@ -42,9 +42,18 @@ class LineDetector {
         )
 
         object Horizontal {
-            val top = create(Position.Row.TOP)
-            val center = create(Position.Row.CENTER)
-            val bottom = create(Position.Row.BOTTOM)
+            val top =
+                create(
+                    Position.Row.TOP
+                )
+            val center =
+                create(
+                    Position.Row.CENTER
+                )
+            val bottom =
+                create(
+                    Position.Row.BOTTOM
+                )
 
             private fun create(row: Position.Row) = Line(
                 Position(Position.Column.LEFT, row),
@@ -54,9 +63,18 @@ class LineDetector {
         }
 
         object Vertical {
-            val left = create(Position.Column.LEFT)
-            val center = create(Position.Column.CENTER)
-            val right = create(Position.Column.RIGHT)
+            val left =
+                create(
+                    Position.Column.LEFT
+                )
+            val center =
+                create(
+                    Position.Column.CENTER
+                )
+            val right =
+                create(
+                    Position.Column.RIGHT
+                )
 
             private fun create(column: Position.Column) = Line(
                 Position(column, Position.Row.TOP),
@@ -66,8 +84,16 @@ class LineDetector {
         }
 
         object Diagonal {
-            val topLeft = create(Position.Column.LEFT, Position.Column.RIGHT)
-            val bottomLeft = create(Position.Column.RIGHT, Position.Column.LEFT)
+            val topLeft =
+                create(
+                    Position.Column.LEFT,
+                    Position.Column.RIGHT
+                )
+            val bottomLeft =
+                create(
+                    Position.Column.RIGHT,
+                    Position.Column.LEFT
+                )
 
             private fun create(topColumn: Position.Column, bottomColumn: Position.Column) = Line(
                 Position(topColumn, Position.Row.TOP),

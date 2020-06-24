@@ -1,13 +1,10 @@
 package com.negusoft.tictactoe.utils
 
-import android.content.res.Resources
 import android.view.View
 import android.widget.TextView
-import androidx.annotation.AttrRes
 import androidx.databinding.BindingAdapter
-import com.negusoft.tictactoe.GameResult
+import com.negusoft.tictactoe.domain.GameResult
 import com.negusoft.tictactoe.R
-import com.negusoft.tictactoe.data.Grid
 import com.negusoft.tictactoe.data.Player
 
 object ViewBindingAdapter {
